@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => {
       include: ["react/jsx-runtime", "react/jsx-dev-runtime"],
     },
     server: {
+      allowedHosts: [env.VITE_FRONTEND_URL],
       host: true,
       port: PORT,
       proxy: {
