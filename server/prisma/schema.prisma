@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(uuid())
+  username     String    @unique @db.VarChar(20)
+  password     String
+  createdDecks Deck[]    @relation("CreatedDecks")
+  copiedDecks  Deck[]    @relation("CopiedDecks")
+  Cards        Card[]
+  Session      Session[]
+}
+
+model Deck {
+  id             String   @id @default(uuid())
+  user           User     @relation("CreatedDecks", fields: [userId], references: [id])
+  userId         String
+  originalUser   User     @relation("CopiedDecks", fields: [originalUserId], references: [id])
+  originalUserId String
+  name           String   @db.VarChar(50)
+  privacy        Privacy
+  cards          Card[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  copies         Int      @default(0)
+  ratingSum      Int      @default(0)
+  numRatings     Int      @default(0)
+}
+
+model Card {
+  id              String          @id @default(uuid())
+  user            User            @relation(fields: [userId], references: [id])
+  userId          String
+  dueForReview    DateTime?
+  inCurrentStack  Boolean         @default(false)
+  front           String
+  back            String
+  tags            String[]
+  backgroundColor BackgroundColor
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  timesStudied    Int             @default(0)
+  timesCorrect    Int             @default(0)
+  lastStudied     DateTime?
+  decks           Deck[]
+  Session         Session?        @relation(fields: [sessionId], references: [id])
+  sessionId       String?
+}
+
+model Session {
+  id            String      @id @default(uuid())
+  user          User        @relation(fields: [userId], references: [id])
+  userId        String
+  type          Sessiontype
+  cards         Card[]
+  start         DateTime?
+  end           DateTime?
+  mode          Mode
+  timer         Boolean
+  tags          Boolean
+  colored       Boolean
+  cardsReviewed Int
+  numCorrect    Int         @default(0)
+}
+
+enum Privacy {
+  PRIVATE
+  PUBLIC
+}
+
+enum BackgroundColor {
+  White
+  Black
+  Red
+  Green
+  Blue
+  Yellow
+  Orange
+  Purple
+  Pink
+  Teal
+  Brown
+  Lime
+  Navy
+  Gold
+  Cyan
+  Gray
+}
+
+enum Mode {
+  Casual
+  Quiz
+}
+
+enum Sessiontype {
+  due
+  current
+  deck
+}

@@ -1,0 +1,42 @@
+#footer-container {
+  align-items: center;
+  background-color: lavender;
+  background-image: linear-gradient(to right, #d8ceee 1px, transparent 1px),
+    linear-gradient(to bottom, #d8ceee 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  width: 100%;
+  .logo {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  .links {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    a {
+      align-items: center;
+      border-radius: 100%;
+      display: flex;
+      margin: 0 0.5rem;
+      padding: 0.5rem;
+      img {
+        background-color: transparent;
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+    a:hover {
+      background-color: var(--accent-1);
+    }
+  }
+  .copyright {
+    font-weight: bold;
+    text-align: center;
+  }
+}

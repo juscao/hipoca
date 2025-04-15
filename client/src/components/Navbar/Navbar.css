@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pattaya&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+#navbar-container {
+  background-color: lavender;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  padding: 0.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+#navbar-content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 80%;
+}
+
+#navbar-logo {
+  a {
+    align-items: center;
+    color: #000000;
+    display: flex;
+    font-family: "Pattaya", sans-serif;
+    font-size: 2rem;
+    text-decoration: none;
+    img {
+      height: 3rem;
+      margin-right: 1rem;
+      width: 3rem;
+    }
+  }
+}
+
+#navbar-buttons {
+  align-items: center;
+  display: flex;
+  font-weight: bold;
+  a {
+    color: #000000;
+    text-decoration: none;
+    margin: 0.5rem 0.5rem;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  #logout-button {
+    background-color: rgb(220, 53, 69);
+    border-radius: 0.25rem;
+    color: #ffffff;
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  #logout-button:hover {
+    filter: brightness(90%);
+  }
+  #sign-up-button {
+    background-color: teal;
+    border-radius: 0.25rem;
+    color: var(--bg-main);
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  #sign-up-button:hover {
+    filter: brightness(90%);
+    text-decoration: none;
+  }
+}
+
+#navbar-hamburger {
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  display: none;
+  height: 2rem;
+  padding: 0;
+  position: relative;
+  img {
+    height: 2rem;
+    width: 2rem;
+  }
+  img:hover {
+    background-color: var(--bg-main);
+  }
+}
+#navbar-hamburger:hover {
+  filter: brightness(100%);
+}
+#navbar-hamburger .hamburger-list {
+  background-color: var(--bg-main);
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  text-align: right;
+  right: 0;
+  top: 100%;
+  z-index: 1;
+  a {
+    color: #000000;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  button {
+    background-color: transparent;
+    color: red;
+    padding: 0;
+    text-align: right;
+  }
+  button:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 768px) {
+  #navbar-buttons {
+    display: none;
+  }
+  #navbar-hamburger {
+    display: flex;
+  }
+}
